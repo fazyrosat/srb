@@ -1,0 +1,105 @@
+
+<?php 
+    $_customer = Mage::getSingleton('customer/session')->getCustomer(); 
+    $customer = $_customer->getData();
+    if ($_customer && $customer['entity_id']) {
+        $customerId = $customer['entity_id'];
+        $orderObject = Mage::getModel('sales/order')
+        ->getCollection()
+        ->addFieldToFilter("customer_id", $customerId);
+    } else {
+        $base_url = Mage::getBaseUrl()."customer/account/login/";
+        header("Location: ".$base_url);
+        die();
+    }
+
+    if (isset($_POST['submit-return'])) {
+        $id = $_POST['order_id'];
+        $order_complete = Mage::getModel('sales/order')->load($id);
+        // check only stutus complete
+        if ($order_complete->getStatus() == "complete") {
+            $srbBack = Mage::helper("srb_shipback/shipback")->addShipback($id, $customerId);
+            if ($srbBack['code'] == 201 || $srbBack['code'] == 200) {
+                $srbUrl = $srbBack['public_url'];
+                header("Location: $srbUrl");
+                die();
+            }
+        }
+    }
+?>
+<style type="text/css">
+    .submit-return{
+        border: none;
+        padding: 0!important;
+        cursor: pointer;
+        background-color: #ffffff00;
+        color: #3399cc;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 200;
+    }
+    button.submit-return:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="my-account">
+    <div class="page-title">
+        <h1>Return Order</h1>
+    </div>
+    <table class="data-table orders" id="my-orders-table">
+        <thead>
+            <tr class="first last">
+                <th class="number"><?php echo $this->__('Order #') ?></th>
+                <th class="date"><?php echo $this->__('Date') ?></th>
+                <th class="ship"><?php echo $this->__('Ship To') ?></th>
+                <th class="total"><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
+                <th class="status"><span class="nobr"><?php echo $this->__('Order Status') ?></span></th>
+                <th class="view">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($orderObject as $order) {
+                if ($order->getStatus() != "canceled" && @$order->getShippingAddress()->getName()) {
+                    $createDate = explode(" ", $order->getCreatedAt());
+                    $productID = $order->getEntityId();
+                    $order_map = Mage::helper('srb_shipback/order')->getByField("id_item", $productID);
+                    $returnButton = '
+                        <form action="" method="POST" target="_blank">
+                            <input type="hidden" name="order_id" value="'.$order->getEntityId().'">
+                            <span class="separator">|</span> 
+                            <button class="submit-return" type="submit" name="submit-return">'.$this->__('Return Now').'</button>
+                        </form>
+                    ';
+            ?>
+                    <tr class="first last odd">
+                        <td class="number"><?php echo $order->getIncrementId(); ?></td>
+                        <td class="date"><span class="nobr"><?php echo $createDate[0]; ?></span></td>
+                        <td class="ship"><?php echo $order->getShippingAddress()->getName(); ?></td>
+                        <td class="total"><span class="price">
+                            <?php echo $order->formatPrice($order->getGrandTotal()) ?>
+                        </span></td>
+                        <td class="status"><em>
+                            <?php echo $order->getStatus(); ?>
+                        </em></td>
+                        <td class="a-center view last">
+                            <span class="nobr">
+                                <a href="<?php echo Mage::getBaseUrl().'sales/order/view/order_id/'.$order->getEntityId() ?>">
+                                    <?php echo $this->__('View Order') ?>
+                                </a>
+                                <?php
+                                    if ($order_map['last_sent_at'] != "" && $order->getStatus() == "complete") {
+                                        echo $returnButton;
+                                    }
+                                ?>
+                            </span>
+                        </td>
+                    </tr>
+            <?php 
+                } //end if
+            } //end foreach
+            ?>
+        </tbody>
+    </table>
+</div>

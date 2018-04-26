@@ -1,0 +1,18 @@
+<?php  
+    $menu_list  = $this->getMenuItemList();
+?>
+<div class="srb-menu">
+    <table class="srb-tb-menu">
+        <tr>
+            <?php 
+                foreach ($menu_list as $key => $menu) {
+                    echo "
+                        <td class='".$menu['active']."' > 
+                            <a href='".$menu['url']."'> ".$menu['caption']." </a>
+                        </td>
+                    ";
+                }
+            ?>
+        </tr>
+    </table>
+</div>

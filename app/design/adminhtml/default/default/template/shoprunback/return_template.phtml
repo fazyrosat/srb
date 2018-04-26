@@ -1,0 +1,78 @@
+<?php 
+    $data = $this->getData();
+    $returnList = $data["returnList"];
+    $public_url = $data['public_url'];
+?>
+<div class="srb-wrapper">
+    <!-- Start srb-menu -->
+    <?php echo $this->getChildHtml('menu'); ?> 
+    <!-- Start srb-content -->
+    <div class="srb-content">
+        <div class="srb-content-head">
+            <span class="srb-title"><?php echo $this->__("My returns"); ?></span>
+            <span class="srb-btn srb-find">
+                <a href="<?php echo trim($public_url).'/shipbacks'; ?>" target="_blank">
+                    <?php echo $this->__("Check on ShopRunBack"); ?>
+                </a>
+            </span>
+            <span class="srb-btn" onclick="syncAll()"><?php echo $this->__("Synchronize all"); ?></span>
+        </div>
+        <p class="srb-spam"><?php echo stripslashes($this->__("Your returns' informations")); ?></p>
+        <div class="srb-table-blog" style="height: 600px; overflow-y: auto;">
+            <table class="srb-table">
+                <thead>
+                    <tr>
+                        <th><?php echo $this->__("Returns"); ?></th>
+                        <th><?php echo $this->__("Customer"); ?></th>
+                        <th><?php echo $this->__("Order ID"); ?></th>
+                        <th><?php echo $this->__("State"); ?></th>
+                        <th><?php echo $this->__("Created at"); ?></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <?php 
+                            foreach ($returnList as $return) {
+                                $id = $return['id_srb_shipback'];
+                                $customer = $return['customer'];
+                                $order_id = $return['order_increment_id'];
+                                $state = $return['state']; 
+                                $created_at = $return['created_at'];
+                                $return_public_url = $public_url."shipbacks/".$id;
+                                $popup_link = "<a href='$return_public_url' class='srb-link' target='_blank'> 
+                                        ↗ </a>";
+                                echo "<tr>
+                                    <td>$id </td>
+                                    <td>$customer </td>
+                                    <td>$order_id </td>
+                                    <td>$state </td>
+                                    <td>$created_at </td>
+                                    <td>$popup_link</td>
+                                    </tr>
+                                ";
+                            }
+                        ?>
+                </tbody>
+            </table>
+            <?php echo $this->getChildHtml('pagination'); ?> 
+        </div>
+    </div>
+    <!-- end srb-content -->
+</div>
+<script type="text/javascript">
+    function findOnSRB(){
+        window.location = "<?php echo trim($public_url).'/shipbacks'; ?>";
+    }// end function
+
+    function syncAll()
+    {
+        new Ajax.Request('', {
+            method: 'post',
+            parameters: {sync_type: 'sync_all'},
+            onSuccess: function(response){
+                   location.reload();
+            },
+            onFailure:  function(response){}
+        });
+    }
+</script>
