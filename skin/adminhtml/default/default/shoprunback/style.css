@@ -1,0 +1,107 @@
+.srb-menu{
+	width: 100%;
+}
+.srb-tb-menu{
+	width: 100%;
+}
+.srb-tb-menu tr td {
+    text-align: center;
+}
+.srb-tb-menu tr td a {
+    display: block;
+    background-color: #333c49;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+}
+.srb-tb-menu tr td a:hover{
+	background-color: #ffbc00;
+}
+.srb-active a{
+    background-color: #ffbc00 !important;
+}
+.srd-created, .srd-transiting, .srd-syn {
+    background-color: #5796e5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.srd-transiting{
+    background-color: #ffbc00;
+}
+.srd-syn{
+    border-radius: 10px;
+    background-color: #ffbc00;
+}
+.srb-content{
+	width: 100%;
+}
+.srb-content-head {
+    padding: 25px 0;
+	padding-bottom: 15px;
+}
+a.srb-link {
+    text-decoration: none;
+    color:white;
+    background: #00aff0;
+    padding: 2px;
+    font-size: 9px;
+}
+span.srb-title {
+    font-size: 26px;
+    padding-right: 10px;
+}
+span.srb-btn {
+    background-color: #ffbc00;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    margin: 0px 10px;
+    display: inline-block;
+}
+span.srb-btn:hover {
+    background: linear-gradient(#ffbc00, #ffa500);
+}
+span.srb-btn a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+table.srb-table {
+    width: 100%;
+    border: 1px solid #000;
+}
+table.srb-table thead tr th {
+    text-align: center;
+    background-color: #333c49;
+    color: #fff;
+    padding: 5px;
+}
+table.srb-table tbody tr td {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.srb-pagination {
+    padding-top: 10px;
+}
+.srb-pagination ul li {
+    display: inline-block;
+    font-size: 15px;
+}
+.srb-pagination ul li a {
+    text-decoration: none;
+    padding: 0px 5px;
+}
+.srb-pagination ul li a:hover {
+    text-decoration: underline;
+    color: #2f2f2f;
+}
+li.page-active {
+    text-decoration: underline;
+    padding: 0px 5px;
+}

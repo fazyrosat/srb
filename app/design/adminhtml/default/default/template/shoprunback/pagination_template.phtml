@@ -1,0 +1,79 @@
+<?php 
+$numItem = $this->getNumItem();
+$limit_item = $this->getLimitItem();
+if($numItem>$limit_item){
+    echo '<div class="srb-pagination">';
+        $numPage = $numItem/$limit_item;
+        $numPage = ceil($numPage);
+        $page = 1;
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        }
+        $prevPage = $page - 1;
+        $nextPage = $page + 1;
+        $prev = "<li><a href='?page=$prevPage'>Prev</a></li>";
+        $next = "<li><a href='?page=$nextPage'>Next</a></li>";
+        if ($numPage <= 1) {
+            $prev = "<li>Prev</li>";
+            $next = "<li>Next</li>";
+        } elseif ($page == 1) {
+            $prev = "<li>Prev</li>";
+        } elseif ($page == $numPage) {
+            $next = "<li>Next</li>";
+        }
+        echo "<ul>";   
+            echo $prev;
+            if ($numPage <= 6) {
+                for ($i=1; $i <= $numPage ; $i++) {
+                    if ($page == $i) {
+                        echo "<li class='page-active'>$i</li>"; 
+                    } else {
+                        echo "
+                            <li>
+                                <a href='?page=$i'>$i</a>
+                            </li>
+                        "; 
+                    }
+                }
+            } else {
+                if ($page <= 3) {
+                    for ($i=1; $i <= $numPage ; $i++) {
+                        if ($i >= 6) {
+                            echo "<li>. . .</li>";
+                            break;
+                        }
+                        if ($page == $i) {
+                            echo "<li class='page-active'>$i</li>"; 
+                        } else {
+                            echo "
+                                <li>
+                                    <a href='?page=$i'>$i</a>
+                                </li>
+                            "; 
+                        }
+                    }
+                } else {
+                    echo "<li>. . .</li>";
+                    for ($i=$page-2; $i <= $numPage ; $i++) {
+                        if ($i >= $page +3) {
+                            echo "<li>. . .</li>";
+                            break;
+                        }
+                        if ($page == $i) {
+                            echo "<li class='page-active'>$i</li>"; 
+                        } else {
+                            echo "
+                                <li>
+                                    <a href='?page=$i'>$i</a>
+                                </li>
+                            "; 
+                        }
+                    }
+                }
+            }
+            echo $next;
+        echo "</ul>";
+        echo "</div>";
+}
+
+?>

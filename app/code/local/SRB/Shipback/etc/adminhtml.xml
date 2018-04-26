@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config>
+ 
+    <!--We declare the new Option Menu-->
+    <menu>
+        <!-- This is our module identifier -->
+        <srb_shipback>
+            <title>Shoprunback</title>
+            <sort_order>
+                400
+            </sort_order>
+            <children>
+                <srb_return>
+                    <title>My returns</title>
+                    <!--The action composed by frontname/controller/action-->
+                    <action>shoprunback/adminhtml_index/return</action>
+                    <sort_order>1</sort_order>
+                </srb_return>
+                <srb_product>
+                    <title>My products</title>
+                    <!--The action composed by frontname/controller/action-->
+                    <action>shoprunback/adminhtml_index/product</action>
+                    <sort_order>2</sort_order>
+                </srb_product>
+                <srb_brand>
+                    <title>My brands</title>
+                    <!--The action composed by frontname/controller/action-->
+                    <action>shoprunback/adminhtml_index/brand</action>
+                    <sort_order>3</sort_order>
+                </srb_brand>
+                <srb_order>
+                    <title>My orders</title>
+                    <!--The action composed by frontname/controller/action-->
+                    <action>shoprunback/adminhtml_index/order</action>
+                    <sort_order> 4</sort_order>
+                </srb_order>
+                <srb_config>
+                    <title>Configuration</title>
+                    <!--The action composed by frontname/controller/action-->
+                    <action>shoprunback/adminhtml_index/config</action>
+                    <sort_order>5</sort_order>
+                </srb_config>
+            </children>
+        </srb_shipback>
+    </menu>
+ 
+ 
+    <!--Declares Access Controll List for the module-->
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <!-- This is for the System option of the Backend Menu -->
+                    <system translate="title" module="SRB_Shipback">
+                        <title>Shoprunback Shipback Service</title>
+                        <sort_order>60</sort_order>
+                        <children>
+                            <!-- This is the module identifier we used above-->
+                            <srb_shipback>
+                                <title>Shoprunback Shipback Service</title>
+                            </srb_shipback>
+ 
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+ 
+</config>

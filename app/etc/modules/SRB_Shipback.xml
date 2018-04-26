@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+	<SRB_Shipback>
+		<active>true</active>
+		<codePool>local</codePool>
+	</SRB_Shipback>
+</modules>
+</config>

@@ -1,0 +1,148 @@
+<?php 
+    $data = $this->getData();
+    $limit_item = $data['limit_item'];
+    $orderList = $data["orderList"];
+    $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $public_url =  trim($data['srb_order_url']);
+    $form_key = Mage::getSingleton('core/session')->getFormKey();
+?>
+<div class="srb-wrapper">
+    <!-- Start srb-menu -->
+    <?php echo $this->getChildHtml('menu'); ?> 
+    <!-- Start srb-content -->
+    <div class="srb-content">
+        <div class="srb-content-head">
+            <span class="srb-title"><?php echo $this->__("My orders"); ?></span>
+            <span class="srb-btn" onclick="syncNew()"><?php echo $this->__("Synchronize New only"); ?></span>
+            <span class="srb-btn srb-find">
+                <a href="<?php echo trim($public_url).'/orders'; ?>" target="_blank">
+                    <?php echo $this->__("Check on ShopRunBack"); ?>
+                </a>
+            </span>
+        </div>
+        <p class="srb-spam"><?php echo $this->__("Description of orders"); ?></p>
+        <div class="srb-table-blog">
+            <table class="srb-table">
+                <thead>
+                    <tr>
+                        <th><?php echo $this->__("No"); ?></th>
+                        <th><?php echo $this->__("Order ID"); ?></th>
+                        <th><?php echo $this->__("Customer"); ?></th>
+                        <th><?php echo $this->__("Created at"); ?></th>
+                        <th><?php echo $this->__("Returns"); ?></th>
+                        <th><?php echo $this->__("Last synchronization"); ?></th>
+                        <th><?php echo $this->__("Synchronize"); ?></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $i=0;
+                        if (isset($_GET['page'])) {
+                            $i = (($_GET['page']-1)*$limit_item);
+                        }
+                        foreach ($orderList as $order) {
+                            $i++;
+                            $item_map = $order['data'];
+                            $client = $order['client'];
+                            $create_at = $order['created_at'];
+                            $syn_date = $item_map['last_sent_at'];
+                            $orderq = $order['order'];
+                            $id =  $order['id'];
+                            $srb_order_url = $public_url.'orders/'.$item_map['id_item_srb'];
+                            $update_form = "";
+                            $popup_link = "-";
+                            $status_return = trim($order['return_status']) != ""?$order['return_status']: "-";
+
+                            if (trim($syn_date) == "") {
+                                $syn_date = "-";
+                                $update_form = "<button class='srd-syn' onclick='syncItem($id)'>".$this->__("Synchronize")."</button>";
+                            } else {
+                                $update_form ="-";
+                                $popup_link = "<a href='$srb_order_url' class='srb-link' target='_blank'> 
+                                        ↗ </a>";
+                            }
+                            echo "
+                                <tr id='$id'>
+                                    <td>$i</td>
+                                    <td>$orderq</td>
+                                    <td>$client</td>
+                                    <td>$create_at</td>
+                                    <td>$status_return</td>
+                                    <td class='sent_time'>$syn_date</td>
+                                    <td class='update_form'> 
+                                        $update_form
+                                    </td>
+                                    <td class='url_item'>
+                                        $popup_link
+                                    </td>
+                                        
+                                </tr>
+                            ";
+                        }
+                    ?>
+                </tbody>
+            </table>
+            <?php echo $this->getChildHtml('pagination'); ?> 
+            <?php
+                // $numItem = Mage::getResourceModel('sales/order_collection')->getSize();
+                // $product_dao = Mage::helper('srb_shipback/order');
+                // $product_dao->setPagination($numItem);
+            ?>
+        </div>
+    </div>
+    <!-- end srb-content -->
+</div>    
+<script>
+    function syncAll()
+    {
+        new Ajax.Request('', {
+           method: 'post',
+           parameters: {sync_type: 'sync_all'},
+           onSuccess: function(response){
+                   location.reload();
+           },
+           onFailure:  function(response){}
+        });
+    }
+
+    function syncNew()
+    {
+        new Ajax.Request('', {
+           method: 'post',
+           parameters: {sync_type: 'sync_new'},
+           onSuccess: function(response){
+                   location.reload();
+           },
+           onFailure:  function(response){}
+        });
+    }
+    
+    function syncItem(id)
+    {   
+        var srb_url = "<?php echo $public_url; ?>" + "orders/";
+        var tr = document.getElementById(id);
+        var sent_time = tr.getElementsByClassName('sent_time')[0];
+        var url_item = tr.getElementsByClassName('url_item')[0];
+        var update_form = tr.getElementsByClassName('update_form')[0];
+        new Ajax.Request('', {
+           method: 'post',
+           parameters: {id_item: id},
+           onSuccess: function(response){
+                var obj = JSON.parse(response.responseText);
+                if (obj.code == 200 || obj.code == 201) {
+                    srb_url += obj.id;
+                    sent_time.innerHTML = obj.last_sent;
+                    update_form.innerHTML = "-";
+                    url_item.innerHTML = "<a href='"+srb_url+"' class='srb-link' target='_blank'> ↗ </a>";
+                }   
+           },
+           onFailure:  function(response){}
+        });
+    }
+
+    function findOnSRB()
+    {
+        window.location ="<?php echo trim($public_url).'/orders'; ?>";
+    }
+</script>

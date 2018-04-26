@@ -1,0 +1,54 @@
+<?php 
+    $data = $this->getData();
+    $brandlist = $data['brandList'];
+    $public_url = $data['srb_product_url'];
+?>
+
+<div class="srb-wrapper">
+    <!-- Start srb-menu -->
+    <?php echo $this->getChildHtml('menu'); ?> 
+    <!-- Start srb-content -->
+    <div class="srb-content">
+        <div class="srb-content-head">
+            <span class="srb-title"><?php echo $this->__("My brands"); ?></span>
+            <span class="srb-btn srb-find">
+                <a href="<?php echo trim($public_url).'/brands'; ?>" target="_blank">
+                    <?php echo $this->__("Check on ShopRunBack"); ?>
+                </a>
+            </span>
+        </div>
+        <p class="srb-spam"><?php echo $this->__("Description of Brands"); ?></p>
+        <div class="srb-table-blog">
+            <table class="srb-table">
+                <thead>
+                    <tr>
+                        <th><?php echo $this->__("No"); ?></th>
+                        <th><?php echo $this->__("Labels"); ?></th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        for($i=0; $i < count($brandlist) - 1; $i++){
+                            $brand = $brandlist[$i];
+                            $name = $brand['name'];
+                            $srb_brand_url = $public_url.'brands/'.$brand['id'];
+                            $no = $i + 1;
+                            echo "
+                                <tr>
+                                    <td>$no</td>
+                                    <td>$name </td>
+                                    <td>
+                                        <a href='$srb_brand_url' class='srb-link' target='_blank'> 
+                                    ↗ </a>
+                                    </td>
+                                </tr>
+                            ";
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- end srb-content -->
+</div>
