@@ -1,0 +1,16 @@
+{
+    "name": "SRB/Shipback",
+    "description": "Official Magento Plugin to connect to Payment Service Provider Adyen.",
+    "type": "magento-module",
+    "homepage": "https://github.com/fazyrosat/srb",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "SRB",
+            "email": "fazyrosat@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    }
+}
