@@ -1,0 +1,400 @@
+{
+  "package": {
+    "name": "SRB_magento",
+    "version": "1.0.0",
+    "stability": "devel",
+    "license": "OSL V3.0",
+    "channel": "community",
+    "summary": "Connect to SRB-shipback service",
+    "description": "Provide shipback service from ShopRunBack",
+    "notes": "First Version",
+    "authors": {
+      "author": {
+        "name": "ShopRunBack",
+        "user": "salysakey",
+        "email": "salysakey@gmail.com"
+      }
+    },
+    "date": "2018-04-25",
+    "time": "10:51:26",
+    "contents": {
+      "target": [
+        {
+          "-name": "magelocal",
+          "dir": {
+            "-name": "SRB",
+            "dir": {
+              "-name": "Shipback",
+              "dir": [
+                {
+                  "-name": "Helper",
+                  "file": [
+                    {
+                      "-name": "Brand.php",
+                      "-hash": "d2a3770d3e534d0dbd20f6deec2fda2b"
+                    },
+                    {
+                      "-name": "Config.php",
+                      "-hash": "57a54baaa2a7fac34c37dc194af06c07"
+                    },
+                    {
+                      "-name": "Coredata.php",
+                      "-hash": "11cccd14fa1a9bb53b648194d0fb31ef"
+                    },
+                    {
+                      "-name": "Dao.php",
+                      "-hash": "eb5e0481b34f7f36361d6de5db70d2a5"
+                    },
+                    {
+                      "-name": "Order.php",
+                      "-hash": "ce561637cefd4aff0c892c305189063f"
+                    },
+                    {
+                      "-name": "Product.php",
+                      "-hash": "1c358278aa72b1a7305abb4d73bf47cf"
+                    },
+                    {
+                      "-name": "Shipback.php",
+                      "-hash": "bc8edd236f34aa99635e1e0963d42438"
+                    },
+                    {
+                      "-name": "Srbapi.php",
+                      "-hash": "264aadf395dddc97b3a5ff4904bc464c"
+                    },
+                    {
+                      "-name": "Srblog.php",
+                      "-hash": "1e88b55750a848cfd9755f2d36191861"
+                    }
+                  ]
+                },
+                {
+                  "-name": "Model",
+                  "file": [
+                    {
+                      "-name": "Observer.php",
+                      "-hash": "fb3a21de156c92a10ab6fff2c2f92723"
+                    },
+                    {
+                      "-name": "Srbconf.php",
+                      "-hash": "346d4116651140a6a34d94b44cb5f3d6"
+                    },
+                    {
+                      "-name": "Srbmapper.php",
+                      "-hash": "599e79c2d48d3dfef825069b4a84fa5d"
+                    },
+                    {
+                      "-name": "Srbshipback.php",
+                      "-hash": "d024746d173c58258f8099ac0337de51"
+                    },
+                    {
+                      "-name": ".DS_Store",
+                      "-hash": "788460d9c23b22821cd89bbedcb9d0a2"
+                    }
+                  ],
+                  "dir": {
+                    "-name": "Resource",
+                    "file": [
+                      {
+                        "-name": "Productmap.php",
+                        "-hash": "a4c2a119b05ccba6257761aee3673d4a"
+                      },
+                      {
+                        "-name": "Setup.php",
+                        "-hash": "6c5781e78ad1bebafb5fe2d6e062ed58"
+                      },
+                      {
+                        "-name": "Srbconf.php",
+                        "-hash": "28dbaa62161862d18196945003a2867c"
+                      },
+                      {
+                        "-name": "Srbmapper.php",
+                        "-hash": "ccf998d808aade773c2d0e9bb6a29b2e"
+                      },
+                      {
+                        "-name": "Srbshipback.php",
+                        "-hash": "10b9614ddd006df52c4df0fea40f5d8d"
+                      }
+                    ],
+                    "dir": [
+                      {
+                        "-name": "Srbconf",
+                        "file": {
+                          "-name": "Collection.php",
+                          "-hash": "6f6381f1fd6e159bedadbaba1df6ac25"
+                        }
+                      },
+                      {
+                        "-name": "Srbmapper",
+                        "file": {
+                          "-name": "Collection.php",
+                          "-hash": "aef5c1e077d7064d8a66e9e5fa49fe0a"
+                        }
+                      },
+                      {
+                        "-name": "Srbshipback",
+                        "file": {
+                          "-name": "Collection.php",
+                          "-hash": "3694db6faa7809d84cdbe42da989b00a"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "-name": "controllers",
+                  "dir": {
+                    "-name": "Adminhtml",
+                    "file": {
+                      "-name": "IndexController.php",
+                      "-hash": "bdcf675b3ce7663f967618533d995b93"
+                    }
+                  },
+                  "file": [
+                    {
+                      "-name": "ReturnController.php",
+                      "-hash": "95dc402d2520f0e927be9c7e4857d222"
+                    },
+                    {
+                      "-name": "WebhookController.php",
+                      "-hash": "9dfb34458a079cb454df5541757edd19"
+                    }
+                  ]
+                },
+                {
+                  "-name": "etc",
+                  "file": [
+                    {
+                      "-name": "adminhtml.xml",
+                      "-hash": "e330eca7f92cdda5a4c9ae2da27b2ac3"
+                    },
+                    {
+                      "-name": "config.xml",
+                      "-hash": "dd4d8e530cedb616e595c75b56ac898f"
+                    }
+                  ]
+                },
+                {
+                  "-name": "sql",
+                  "dir": {
+                    "-name": "srb_shipback_setup",
+                    "file": [
+                      {
+                        "-name": "mysql4-install-1.0.0.php",
+                        "-hash": "624f3a947eccda92c39df9c9928edb1b"
+                      },
+                      {
+                        "-name": "upgrade-1.0.0-1.0.1.php",
+                        "-hash": "ce407ff5715c837d02b1aba7975bf512"
+                      }
+                    ]
+                  },
+                  "file": {
+                    "-name": ".DS_Store",
+                    "-hash": "e3d2ed19b268debc0a69b2c08714cb52"
+                  }
+                }
+              ],
+              "file": {
+                "-name": ".DS_Store",
+                "-hash": "cda7e6ddf5838a6777540af30118ae4a"
+              }
+            },
+            "file": {
+              "-name": ".DS_Store",
+              "-hash": "6306ce87eb304f958a102eee64a9ef0e"
+            }
+          }
+        },
+        {
+          "-name": "mageskin",
+          "dir": {
+            "-name": ".",
+            "dir": {
+              "-name": "adminhtml",
+              "dir": {
+                "-name": "default",
+                "dir": {
+                  "-name": "default",
+                  "dir": {
+                    "-name": "shoprunback",
+                    "file": {
+                      "-name": "style.css",
+                      "-hash": "b179d25bd7c28a03e487517ee9e96891"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "-name": "mageetc",
+          "dir": {
+            "-name": ".",
+            "dir": {
+              "-name": "modules",
+              "file": {
+                "-name": "SRB_Shipback.xml",
+                "-hash": "f94bcf814203bc889b0f89de2584ec2c"
+              }
+            }
+          }
+        },
+        {
+          "-name": "magedesign",
+          "dir": {
+            "-name": ".",
+            "dir": [
+              {
+                "-name": "adminhtml",
+                "dir": {
+                  "-name": "default",
+                  "dir": {
+                    "-name": "default",
+                    "dir": [
+                      {
+                        "-name": "layout",
+                        "dir": {
+                          "-name": "shoprunback",
+                          "file": {
+                            "-name": "backendmodule.xml",
+                            "-hash": "baceafaa0df96d433fc4f1f30507b8a6"
+                          }
+                        }
+                      },
+                      {
+                        "-name": "template",
+                        "dir": {
+                          "-name": "shoprunback",
+                          "file": [
+                            {
+                              "-name": "brand_template.phtml",
+                              "-hash": "72764ea2fc16b5e06dcb6268a68f7dd6"
+                            },
+                            {
+                              "-name": "config_template.phtml",
+                              "-hash": "b2cdfc650463dd7f8ff9250d98a81bcb"
+                            },
+                            {
+                              "-name": "menu.phtml",
+                              "-hash": "123ac9f99be55540dc10934cdaa33e6b"
+                            },
+                            {
+                              "-name": "order.phtml",
+                              "-hash": "7a376ea6d2232547c07c77bb62ae7831"
+                            },
+                            {
+                              "-name": "order_template.phtml",
+                              "-hash": "ea3d9b9e8d8e9b2600bd317d38f96938"
+                            },
+                            {
+                              "-name": "pagination_template.phtml",
+                              "-hash": "ed08060d38f98bf6e8ccf8fa44d7b6da"
+                            },
+                            {
+                              "-name": "product_template.phtml",
+                              "-hash": "3645b12e1bac302e33c84228ea4b5a6b"
+                            },
+                            {
+                              "-name": "return_template.phtml",
+                              "-hash": "b38954703db0d891e73681f2bd4cb563"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "-name": "frontend",
+                "dir": [
+                  {
+                    "-name": "rwd",
+                    "dir": {
+                      "-name": "default",
+                      "dir": [
+                        {
+                          "-name": "layout",
+                          "file": {
+                            "-name": "shoprunback.xml",
+                            "-hash": "f72258de794e045a2b0a1541c2574043"
+                          }
+                        },
+                        {
+                          "-name": "template",
+                          "dir": {
+                            "-name": "shoprunback",
+                            "file": {
+                              "-name": "return.phtml",
+                              "-hash": "8c47c2468ed06b8cae40117e6d226235"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "-name": "default",
+                    "dir": {
+                      "-name": "default",
+                      "dir": [
+                        {
+                          "-name": "layout",
+                          "file": {
+                            "-name": "shoprunback.xml",
+                            "-hash": "f72258de794e045a2b0a1541c2574043"
+                          }
+                        },
+                        {
+                          "-name": "template",
+                          "dir": {
+                            "-name": "shoprunback",
+                            "file": {
+                              "-name": "return.phtml",
+                              "-hash": "8c47c2468ed06b8cae40117e6d226235"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "-name": "magelocale",
+          "dir": {
+            "-name": ".",
+            "dir": [
+              {
+                "-name": "fr_FR",
+                "file": {
+                  "-name": "SRB_Shipback.csv",
+                  "-hash": "ca6c18e7c66e57d36e0e9880564d5084"
+                }
+              },
+              {
+                "-name": "fr_CA",
+                "file": {
+                  "-name": "SRB_Shipback.csv",
+                  "-hash": "ca6c18e7c66e57d36e0e9880564d5084"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dependencies": {
+      "required": {
+        "php": {
+          "min": "5.0.0",
+          "max": "7.0.0"
+        }
+      }
+    }
+  }
+}
