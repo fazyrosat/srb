@@ -1,14 +1,14 @@
-app\code\local\SRB\Shipback        app\code\local\SRB\Shipback
+app/code/local/SRB/Shipback        app/code/local/SRB/Shipback
 app/etc/modules/SRB_Shipback.xml   app/etc/modules/SRB_Shipback.xml
 
-app\design\adminhtml\default\default\layout\shoprunback\backendmodule.xml     app\design\adminhtml\default\default\layout\shoprunback\backendmodule.xml
-app\design\adminhtml\default\default\template\shoprunback                     app\design\adminhtml\default\default\template\shoprunback
-app\design\frontend\default\default\layout\shoprunback.xml                    app\design\frontend\default\default\layout\shoprunback.xml
-app\design\frontend\default\default\template\shoprunback                      app\design\frontend\default\default\template\shoprunback
-app\design\frontend\rwd\default\layout\shoprunback.xml                        app\design\frontend\rwd\default\layout\shoprunback.xml
-app\design\frontend\rwd\default\template\shoprunback                          app\design\frontend\rwd\default\template\shoprunback
+app/design/adminhtml/default/default/layout/shoprunback/backendmodule.xml     app/design/adminhtml/default/default/layout/shoprunback/backendmodule.xml
+app/design/adminhtml/default/default/template/shoprunback                     app/design/adminhtml/default/default/template/shoprunback
+app/design/frontend/default/default/layout/shoprunback.xml                    app/design/frontend/default/default/layout/shoprunback.xml
+app/design/frontend/default/default/template/shoprunback                      app/design/frontend/default/default/template/shoprunback
+app/design/frontend/rwd/default/layout/shoprunback.xml                        app/design/frontend/rwd/default/layout/shoprunback.xml
+app/design/frontend/rwd/default/template/shoprunback                          app/design/frontend/rwd/default/template/shoprunback
 
-app\locale\fr_CA\SRB_Shipback.csv         app\locale\fr_CA\SRB_Shipback.csv
-app\locale\fr_FR\SRB_Shipback.csv         app\locale\fr_FR\SRB_Shipback.csv
+app/locale/fr_CA/SRB_Shipback.csv         app/locale/fr_CA/SRB_Shipback.csv
+app/locale/fr_FR/SRB_Shipback.csv         app/locale/fr_FR/SRB_Shipback.csv
 
-skin\adminhtml\default\default\shoprunback\style.css    skin\adminhtml\default\default\shoprunback\style.css
+skin/adminhtml/default/default/shoprunback/style.css    skin/adminhtml/default/default/shoprunback/style.css
