@@ -14,9 +14,6 @@
         "php":">=5.1.0",
         "magento-hackathon/magento-composer-installer":"*"
     },
-    "require-dev": {
-        "srb/shipback": "^1.0.0"
-    },
     "repositories":[
       {
          "type":"composer",
