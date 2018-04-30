@@ -1,6 +1,6 @@
 {
     "name": "SRB/Shipback",
-    "description": "SRB Plugin for magento 1.x",
+    "description": "SRB Plugin for magento 1.5 - 1.9",
     "type": "magento-module",
     "homepage": "https://github.com/fazyrosat/srb",
     "license": "OSL-3.0",
