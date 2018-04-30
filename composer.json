@@ -4,6 +4,7 @@
     "type": "magento-module",
     "homepage": "https://github.com/fazyrosat/srb",
     "license": "OSL-3.0",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "SRB",
