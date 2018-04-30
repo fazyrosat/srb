@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "php":">=5.1.0",
         "magento-hackathon/magento-composer-installer":"*"
     },
     "repositories":[
